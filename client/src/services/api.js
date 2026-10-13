@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-// VITE_API_URL is injected at build time by Netlify's environment variables.
-// Fallback to the known Render URL so the app works even if the env var is missing.
-const RENDER_URL = 'https://ridemates-iy8n.onrender.com';
+// __RENDER_URL__ is injected by vite.config.js at build time.
+// In development the Vite proxy handles /api → localhost:5001.
+// In production this resolves to the Render backend URL.
+const isProduction = import.meta.env.PROD;
 
-const baseURL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : `${RENDER_URL}/api`;
+const baseURL = isProduction
+  ? `${__RENDER_URL__}/api`
+  : '/api';
 
 const api = axios.create({
   baseURL,
