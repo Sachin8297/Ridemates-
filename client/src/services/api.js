@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+// In development, Vite proxies /api → localhost:5001.
+// In production (Netlify), VITE_API_URL points to the Render backend.
+const baseURL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   headers: { 'Content-Type': 'application/json' },
 });
 
