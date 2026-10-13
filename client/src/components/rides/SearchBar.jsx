@@ -24,7 +24,7 @@ const SearchBar = ({ onSearch, initialValues = {}, compact = false }) => {
       className={`${compact ? '' : 'bg-white rounded-2xl shadow-lg p-6'}`}
       aria-label="Search for rides"
     >
-      <div className={`grid gap-3 ${compact ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'}`}>
+      <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
         <div>
           <label htmlFor="origin" className="form-label">Pickup</label>
           <input
@@ -67,7 +67,7 @@ const SearchBar = ({ onSearch, initialValues = {}, compact = false }) => {
         </div>
 
         <div>
-          <label htmlFor="time" className="form-label">Around</label>
+          <label htmlFor="time" className="form-label">Around (time)</label>
           <input
             id="time"
             name="time"
@@ -79,6 +79,7 @@ const SearchBar = ({ onSearch, initialValues = {}, compact = false }) => {
         </div>
 
         <div className="flex flex-col justify-end">
+          <label className="form-label opacity-0 select-none" aria-hidden="true">Search</label>
           <button type="submit" className="btn-primary w-full">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
